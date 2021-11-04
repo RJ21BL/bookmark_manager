@@ -1,6 +1,10 @@
-User story 1:
+As a user
+So I can easily find the page im looking for
+I want to see a list of bookmarks on the website
 
-When user enters website they want to see a list of bookmarks.
+As a user
+So that I can store data for later retrieval
+I want to add bookmarks to Bookmark Manager
 
 DB instructions:
 
