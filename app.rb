@@ -13,22 +13,10 @@ class BookmarkManager < Sinatra::Base
     'Bookmark Manager'
   end
 
-  #   get '/bookmark' do
-  #     erb :bookmark
-
   get '/bookmarks' do
     @bookmarks = Bookmark.all
     erb :bookmarks
   end
 
-  #   get '/bookmarks' do
-  #     bookmarks = [
-  #               "http://www.adobe.com",
-  #               "http://www.google.com"
-  #              ]
-
-  #     bookmarks.join
-  #     erb :bookmarks
-  #   end
   run! if app_file == $PROGRAM_NAME
 end
