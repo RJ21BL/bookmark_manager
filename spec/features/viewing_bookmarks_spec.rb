@@ -1,15 +1,20 @@
 # frozen_string_literal: true
-# require 'spec_helper'
+require 'pg'
 
-feature 'views bookmarks' do
-  scenario 'user views list of bookmarks' do
-    visit '/'
-    expect(page).to have_content 'Bookmark Manager'
-  end
+feature 'Views page' do
+  scenario 'User can see bookmarks' do
+    connection = PG.connect(dbname: 'bookmark_manager_test')
 
-  scenario 'user views list of bookmarks' do
+      connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.adobe.com');")
+      connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.google.com');")
+      connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.tableplus.com');")
+      connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.ufc.com');")
+
     visit '/bookmarks'
-    expect(page).to have_content 'http://www.adobe.com'
-    expect(page).to have_content 'http://www.google.com'
+
+      expect(page).to have_content('http://www.adobe.com')
+      expect(page).to have_content('http://www.google.com')
+      expect(page).to have_content('http://www.tableplus.com')
+      expect(page).to have_content('http://www.ufc.com')
   end
 end
