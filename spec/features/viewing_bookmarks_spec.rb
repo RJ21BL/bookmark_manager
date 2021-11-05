@@ -3,13 +3,11 @@
 require 'pg'
 
 feature 'Views page' do
-  scenario 'User can see bookmarks' do
-    connection = PG.connect(dbname: 'bookmark_manager_test')
-
-    connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.adobe.com');")
-    connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.google.com');")
-    connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.tableplus.com');")
-    connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.ufc.com');")
+  scenario 'User can see the bookmarks' do
+    Bookmark.create(url: 'http://www.adobe.com')
+    Bookmark.create(url: 'http://www.google.com')
+    Bookmark.create(url: 'http://www.tableplus.com')
+    Bookmark.create(url: 'http://www.ufc.com')
 
     visit('/bookmarks')
 
