@@ -11,7 +11,7 @@ feature 'Views page' do
     connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.tableplus.com');")
     connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.ufc.com');")
 
-    visit '/bookmarks'
+    visit('/bookmarks')
 
     expect(page).to have_content('http://www.adobe.com')
     expect(page).to have_content('http://www.google.com')
